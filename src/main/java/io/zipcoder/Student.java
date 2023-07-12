@@ -1,9 +1,11 @@
 package io.zipcoder;
+
+
 import java.util.ArrayList;
 
 
 public class Student {
-    StringBuilder sb = new StringBuilder();
+
 
     private String firstName;
     private String lastName;
@@ -19,6 +21,7 @@ public class Student {
        for(int i=0;i<testScores.length;i++)
        {
            examScores.add(testScores[i]);
+
         }
     }
 
@@ -40,7 +43,6 @@ public String getexamScores()
     }
     String ret = sb.toString();
     return ret;
-
 }
 public void addExamScore(double examscore)
 {
@@ -63,30 +65,29 @@ public int getnumofexamstaken()
     }
 
 
-    public double getAverageExamScore()
-    {
+    public double getAverageExamScore() {
 
-        double sum =0;
-        int i =0;
-        for(Double f:examScores)
-        {
-            sum+=examScores.get(i);
+        double sum = 0;
+        int i = 0;
+        for (Double f : examScores) {
+            sum += examScores.get(i);
             i++;
         }
-        return sum/examScores.size();
+        return sum / examScores.size();
     }
 
     @Override
-    public String toString()
-    {
-        sb.append("Student Name:  " + getFirstName() + " " + getLastName() + "\n");
-        sb.append("> Average Score: " + getAverageExamScore() + "\n");
-        sb.append(getexamScores());
-        String ret = sb.toString();
-        return ret;
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+         {
+            sb.append("Student Name:  " + getFirstName() + " " + getLastName() + "\n");
+            sb.append("> Average Score: " + getAverageExamScore() + "\n");
+            sb.append(getexamScores());
+            String ret = sb.toString();
+
+            return ret;
+        }
     }
-
-
 
 
 

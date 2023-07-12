@@ -27,30 +27,31 @@ public class ClassroomTest {
         System.out.println(output);
     }
 
+    // : Given
     @Test
-    public void addStudent()
-    {
-        // : Given
+    public void testadd() {
         int maxNumberOfStudents = 1;
         Classroom classroom = new Classroom(maxNumberOfStudents);
-        Double[] examScores = { 100.0, 150.0, 250.0, 0.0 };
+        Double[] examScores = {100.0, 150.0, 250.0, 0.0};
         Student student = new Student("Leon", "Hunter", examScores);
 
         // When
         Student[] preEnrollment = classroom.getStudents();
+        String preEnrollmentAsString = Arrays.toString(preEnrollment);
+        System.out.println("===========================");
+        System.out.println(preEnrollmentAsString);
         classroom.addstudent(student);
         Student[] postEnrollment = classroom.getStudents();
 
         // Then
-        String preEnrollmentAsString = Arrays.toString(preEnrollment);
+
         String postEnrollmentAsString = Arrays.toString(postEnrollment);
 
-        System.out.println("===========================");
-        System.out.println(preEnrollmentAsString);
+
         System.out.println("===========================");
         System.out.println(postEnrollmentAsString);
-    }
 
+    }
 
     @Test
     public void removeStudent()
@@ -63,18 +64,11 @@ public class ClassroomTest {
         String firstName2 = "Leonf";
         String lastName2 = "Hunterf";
         Double[] examScores2 = { 100.0, 150.0, 250.0, 0.0 };
-        Student student2 = new Student(firstName, lastName, examScores);
+        Student student2 = new Student(firstName2, lastName2, examScores2);
         classroom.addstudent(student);
         classroom.addstudent(student2);
        classroom.removestudent("Leon","Hunter");
         System.out.println(classroom.getStudents().toString());
-
-
-
-
-
-
-
     }
 
 

@@ -1,5 +1,6 @@
 package io.zipcoder;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -37,17 +38,21 @@ public class Classroom {
 
 public void addstudent(Student f) {
 
-        Student[] ret = new Student[students.length+1];
-        if(students.length!=0) {
-            for (int i = 0; i < students.length; i++) {
-                ret[i] = students[i];
-            }
-            ret[ret.length - 1] = f;
-        } else if (ret.length==1) {
-         ret[0] = f;
+   for(int i =0; i<students.length;i++)
+   {
+
+        if (students[i] ==null) {
+            students[i]=f;
+            break;
         }
-        students=ret;
+
+    }
 }
+
+
+
+
+
 
 public void removestudent(String firstName, String lastName)
 {
@@ -57,20 +62,29 @@ public void removestudent(String firstName, String lastName)
         if(students[i].getFirstName().equals(firstName)&& students[i].getLastName().equals(lastName))
         {
             ArrayList<Student> toarr = new ArrayList<Student>();
-            toarr = (ArrayList<Student>) Arrays.asList(students);
-            toarr.remove(i);
-            students = (Student[]) toarr.toArray();
+            for(Student p: students)
+            {
+                toarr.add(p);
+            }
+            toarr.remove(toarr.get(i));
+            for(int f =0;f<toarr.size();f++)
+            {
+                students[f]=toarr.get(f);
+            }
         }
     }
 
     // Reorder the array
-    int nullIndex = 0;
-    for (int i = 0; i < students.length; i++) {
-        if (students[i] == null) {
-            Student temp = students[i];
-            students[i] = students[nullIndex];
-            students[nullIndex] = temp;
-            nullIndex++;
+        int insertIndex = 0;
+
+        for (int i = 0; i < students.length; i++) {
+            if (students[i] != null) {
+                if (i != insertIndex) {
+                    students[insertIndex] = students[i];
+                    students[i] = null;
+                }
+                insertIndex++;
+            }
         }
     }
 
@@ -80,4 +94,4 @@ public void removestudent(String firstName, String lastName)
 
 }
 
-}
+
