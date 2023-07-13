@@ -49,44 +49,59 @@ public void addstudent(Student f) {
     }
 }
 
-
-
-
-
-
-public void removestudent(String firstName, String lastName)
+public Student[] getStudentsbyScore()
 {
-
-    for(int i=0;i<students.length;i++)
+    Student[] ret = Arrays.copyOf(students,students.length);
+    for(int i=0;i<ret.length-1;i++)
     {
-        if(students[i].getFirstName().equals(firstName)&& students[i].getLastName().equals(lastName))
+        if(ret[i].getAverageExamScore()<ret[i+1].getAverageExamScore())
         {
-            ArrayList<Student> toarr = new ArrayList<Student>();
-            for(Student p: students)
-            {
-                toarr.add(p);
-            }
-            toarr.remove(toarr.get(i));
-            for(int f =0;f<toarr.size();f++)
-            {
-                students[f]=toarr.get(f);
-            }
+            Student temp = ret[i];
+            ret[i]=ret[i+1];
+            ret[i+1]=temp;
+            i=-1;
         }
     }
+    return ret;
 
-    // Reorder the array
-        int insertIndex = 0;
 
-        for (int i = 0; i < students.length; i++) {
-            if (students[i] != null) {
-                if (i != insertIndex) {
-                    students[insertIndex] = students[i];
-                    students[i] = null;
-                }
-                insertIndex++;
-            }
+
+
+
+
+
+
+
+}
+
+
+
+
+
+public void removestudent(String firstName, String lastName) {
+
+
+    int index = 0;
+
+    for (int i = 0; i < students.length; i++) {
+        if (students[i].getFirstName().equals(firstName) && students[i].getLastName().equals(lastName)) {
+            // ArrayList<Student> toarr = new ArrayList<Student>(Arrays.asList(students));
+            index = i;
+            break;
         }
     }
+    for (int i = index; i < students.length - 1; i++) {
+
+        students[i] = students[i + 1];
+        if (i == students.length - 2) {
+            students[i + 1] = null;
+        }
+
+    }
+}
+
+
+
 
 
 

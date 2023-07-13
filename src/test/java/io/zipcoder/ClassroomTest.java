@@ -56,7 +56,7 @@ public class ClassroomTest {
     @Test
     public void removeStudent()
     {
-        Classroom classroom = new Classroom();
+        Classroom classroom = new Classroom(2);
         String firstName = "Leon";
         String lastName = "Hunter";
         Double[] examScores = { 100.0, 150.0, 250.0, 0.0 };
@@ -67,11 +67,39 @@ public class ClassroomTest {
         Student student2 = new Student(firstName2, lastName2, examScores2);
         classroom.addstudent(student);
         classroom.addstudent(student2);
-       classroom.removestudent("Leon","Hunter");
-        System.out.println(classroom.getStudents().toString());
+     //  classroom.removestudent("Leon","Hunter");
+       ArrayList<Student> f = new ArrayList<Student>();
+       for(Student p: classroom.getStudents())
+       {
+        f.add(p);
+       }
+        System.out.println(f);
+    }
+
+@Test
+    public void getStudentsByScore()
+{
+    Student leon = new Student("Leon", "Baker",new Double[]{5.,5.,3.,8.,3.});
+    Student leon1 = new Student("Leon1", "Baker",new Double[]{5.,5.,10.,8.,3.});
+    Student leon2= new Student("Leon2", "Baker",new Double[]{5.,35.,3.,8.,3.});
+    Student leon3 = new Student("Leon3", "Baker",new Double[]{5.,5.,9.,8.,2.});
+    Student[] stuarr = new Student[4];
+    Classroom classs = new Classroom(4);
+    classs.addstudent(leon);
+    classs.addstudent(leon1);
+    classs.addstudent(leon2);
+    classs.addstudent(leon3);
+   Student[] ret = classs.getStudentsbyScore();
+    for (Student student : ret) {
+        System.out.println(student.toString());
     }
 
 
+
+
+
+
+}
 
 
 
