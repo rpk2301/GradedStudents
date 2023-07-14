@@ -5,15 +5,11 @@ import java.util.ArrayList;
 
 
 public class Student {
-
-
     private String firstName;
     private String lastName;
     private ArrayList<Double> examScores = new ArrayList<Double>();
-
-
-
-
+    private double percentile =0;
+    private String finalgrade = "IP";
     public Student(String firstName, String lastName, Double[]testScores)
     {
         this.firstName = firstName;
@@ -24,13 +20,6 @@ public class Student {
 
         }
     }
-
-
-
-
-
-
-
 public String getexamScores()
 {
     StringBuilder sb = new StringBuilder();
@@ -111,5 +100,20 @@ public int getnumofexamstaken()
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+    public double getPercentile() {
+        return percentile;
+    }
+
+    public void setPercentile(double percentile) {
+        this.percentile = percentile;
+    }
+    public void setFinalgrade(String finalgrade) {
+        this.finalgrade = finalgrade;
+    }
+
+    public String getFinalgrade() {
+        return finalgrade;
+    }
+
 
 }

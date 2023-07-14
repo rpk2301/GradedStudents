@@ -1,8 +1,9 @@
 package io.zipcoder;
 import org.junit.*;
-import junit.framework.TestCase;
+
 import java.util.Arrays;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ClassroomTest {
 
@@ -94,14 +95,26 @@ public class ClassroomTest {
         System.out.println(student.toString());
     }
 
-
-
-
-
-
 }
 
+@Test
+    public void testgetGradeBook()
+{
+    Student leon = new Student("Leon", "Baker",new Double[]{5.,5.,3.,8.,3.});
+    Student leon1 = new Student("Leon1", "Baker",new Double[]{5.,5.,10.,8.,3.});
+    Student leon2= new Student("Leon2", "Baker",new Double[]{5.,35.,3.,8.,3.});
+    Student leon3 = new Student("Leon3", "Baker",new Double[]{5.,5.,9.,8.,2.});
+    Student[] stuarr = new Student[4];
+    Classroom classs = new Classroom(4);
+    classs.addstudent(leon);
+    classs.addstudent(leon1);
+    classs.addstudent(leon2);
+    classs.addstudent(leon3);
+    classs.setPercentile();
+   HashMap <Student,String> ricky = classs.getGradeBook();
+   System.out.println(ricky.entrySet());
 
+}
 
 
 
